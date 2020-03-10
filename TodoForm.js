@@ -11,18 +11,20 @@ export default class TodoList extends React.Component{
         })
     }
 
-    handleSubmit = (event) =>{
-        event.preventDefault();
-        //submit form
-        this.props.onSubmit({
-            text: this.state.text, 
-            complete: false,
-            id: shortid.generate()
-        })
-        this.setState({
-            text: ""
-        })
-    } 
+handleSubmit = event => {
+    event.preventDefault();
+    this.props.onSubmit({
+      id: shortid.generate(),
+      text: this.state.text,
+      complete: false
+    });
+    this.setState({
+      text: ""
+    });
+  };
+
+
+
     render(){
         return (
             <form onSubmit={this.handleSubmit}>
